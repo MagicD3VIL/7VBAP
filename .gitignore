@@ -1,0 +1,21 @@
+# BEGIN Lua Backend
+
+# Desc: built binary executables and libraries for LuaRocks, OpenResty and Lapis
+bin/
+rest-api/logs/
+lualib/redis/
+lualib/rds/
+lualib/*.so
+luajit/bin/
+luajit/lib/
+nginx/sbin/
+rest-api/nginx.conf.compiled
+
+# Secrets file used to store config passwords
+rest-api/secrets.lua
+
+# Ignore generated certs and challenges
+etc/resty-auto-ssl/letsencrypt/accounts/
+etc/resty-auto-ssl/letsencrypt/certs/
+
+# END Lua Backend

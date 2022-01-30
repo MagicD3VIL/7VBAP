@@ -1,0 +1,6 @@
+# This file will be overwritten by resty-auto-ssl.
+# Place any customizations in /var/lapis/etc/resty-auto-ssl/letsencrypt/conf.d/*.sh
+
+CONFIG_D="/var/lapis/etc/resty-auto-ssl/letsencrypt/conf.d"
+LOCKFILE="/var/lapis/etc/resty-auto-ssl/letsencrypt/locks/lock"
+WELLKNOWN="/var/lapis/etc/resty-auto-ssl/letsencrypt/.acme-challenges"
