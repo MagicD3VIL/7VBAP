@@ -225,7 +225,7 @@ app:match("posts", "/threads/:thread[%d]/posts(/:id[%d])", respond_to({
     local post = Posts:find(thread_id, id)
     
     if post == nil then
-      return app:jsonResponse(ngx.HTTP_NOT_FOUND, "No thread found with id " .. id)
+      return app:jsonResponse(ngx.HTTP_NOT_FOUND, "No post found in thread " .. thread_id .. " with id " .. id)
     end
     
     if post["posted_by"] ~= posted_by then
