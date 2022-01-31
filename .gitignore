@@ -15,6 +15,7 @@ rest-api/nginx.conf.compiled
 rest-api/secrets.lua
 
 # Ignore generated certs and challenges
+etc/ssl/
 etc/resty-auto-ssl/letsencrypt/accounts/
 etc/resty-auto-ssl/letsencrypt/certs/
 
