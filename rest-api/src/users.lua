@@ -15,7 +15,7 @@ local capture_errors, capture_errors_json, yield_error, assert_error = app_helpe
 
 local Users = Model:extend("users", { primary_key = "uuid" })
 local Credentials = Model:extend("credentials", { 
-  primary_key = "uuid"
+  primary_key = "user_uuid"
 })
 
 
@@ -237,14 +237,14 @@ app:match("login", "/login", respond_to({
       return app:jsonResponse(ngx.HTTP_NOT_FOUND, "User not found")
     end
     
-    local credentials = Credentials:find({ uuid = user["uuid"] })
+    local credentials = Credentials:find(user["uuid"])
     
     if credentials == nil then 
       return app:jsonResponse(ngx.HTTP_NOT_FOUND, "Credentials for the user " .. username .. " not found in the database.")
     end
     
     if bcrypt.verify(password, credentials["password"]) then
-      session = app.session
+      local session = app.session
       session:open()
       if not session.started then
         session:start()
@@ -257,7 +257,7 @@ app:match("login", "/login", respond_to({
       
       session.data.jwt = jwt_token
       session:save()
-      return app:jsonResponse(ngx.HTTP_OK, user["uuid"])
+      return app:jsonResponse(ngx.HTTP_OK, user)
     end
     
     return app:jsonResponse(ngx.HTTP_UNAUTHORIZED, "Invalid credentials")
